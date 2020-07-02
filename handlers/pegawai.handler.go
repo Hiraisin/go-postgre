@@ -19,7 +19,10 @@ func GetAll(c echo.Context) error {
 }
 
 func Input(c echo.Context) error {
-	data := config.M{"message": "Hallo Rizky"}
+	data := config.M{
+		"title":   "Form Input",
+		"message": "Hallo Rizky",
+	}
 	return c.Render(http.StatusOK, "index.html", data)
 }
 
@@ -39,10 +42,4 @@ func StoreData(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, result)
-
-	// return c.JSON(http.StatusOK, map[string]string{
-	// 	"nama":    Nama,
-	// 	"alamat":  Alamat,
-	// 	"telepon": Telepon,
-	// })
 }

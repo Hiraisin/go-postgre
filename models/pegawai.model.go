@@ -6,13 +6,6 @@ import (
 	"github.com/hiraisin/go-postgre/config"
 )
 
-type Pegawai struct {
-	Id      int    `json:"id"`
-	Nama    string `json:"nama"`
-	Alamat  string `json:"alamat"`
-	Telepon string `json:"telepon"`
-}
-
 func GetAll() (Response, error) {
 	var obj Pegawai
 	var arrobj []Pegawai

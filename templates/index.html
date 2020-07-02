@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title></title>
+    <title> {{.title}} </title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
             <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td><input type="text" name="nama"></td>
+                <td><input type="text" name="nama" onfocusout="tes()"></td>
             </tr>
             <tr>
                 <td>Alamat</td>
@@ -21,7 +21,7 @@
             <tr>
                 <td>Telepon</td>
                 <td>:</td>
-                <td><input type="number" name="telepon"></td>
+                <td><input type="number" name="telepon" id="telepon"></td>
             </tr>
             <tr>
                 <td><button type="submit">Submit</button></td>

@@ -10,12 +10,14 @@ import (
 
 func Init() *echo.Echo {
 	e := echo.New()
-	e.Renderer = config.NewRenderer("./*.html", true)
-	// e.Renderer = handlers.NewRenderer("./*.html", true)
+	e.Renderer = config.NewRenderer("./templates/*.html", true)
 
 	e.GET("/tes", func(c echo.Context) error {
 		return c.String(http.StatusOK, "oke")
 	})
+
+	e.GET("/login", handlers.FormLogin)
+	e.POST("/login", handlers.CheckLogin)
 
 	e.GET("/input", handlers.Input)
 	e.GET("/pegawai", handlers.GetAll)

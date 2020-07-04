@@ -7,7 +7,7 @@ import (
 	"github.com/hiraisin/go-postgre/config"
 )
 
-func CheckLogin(username, password string) (bool, error) {
+func CheckLogin(username, password string) error {
 	var obj User
 	var pwd string
 
@@ -21,20 +21,20 @@ func CheckLogin(username, password string) (bool, error) {
 
 	if err == sql.ErrNoRows {
 		fmt.Println("Username Not Found")
-		return false, err
+		return err
 	}
 
 	if err != nil {
 		fmt.Println("Query Error")
-		return false, err
+		return err
 	}
 
 	match := config.CheckPasswordHash(password, pwd)
 	if !match {
 		fmt.Println("Hash and Password doesn't match")
 		fmt.Println(pwd, password)
-		return false, err
+		return err
 	}
 
-	return true, nil
+	return nil
 }

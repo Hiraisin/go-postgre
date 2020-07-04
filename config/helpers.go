@@ -22,6 +22,7 @@ type Renderer struct {
 //secureCookie
 var sc = securecookie.New([]byte("very-secret"), []byte("a-lot-secret-yay"))
 
+//---------------------------------render html---------------------------------//
 func NewRenderer(location string, debug bool) *Renderer {
 	tpl := new(Renderer)
 	tpl.location = location
@@ -49,7 +50,9 @@ func (t *Renderer) Render(
 	return t.template.ExecuteTemplate(w, name, data)
 }
 
-//password bcrypt
+//---------------------------------render html---------------------------------//
+
+//---------------------------------password bcrypt---------------------------------//
 func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	return string(bytes), err
@@ -59,6 +62,8 @@ func CheckPasswordHash(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
 }
+
+//---------------------------------password bcrypt---------------------------------//
 
 //secureCookie
 func SetCookie(c echo.Context, name string, data M) error {

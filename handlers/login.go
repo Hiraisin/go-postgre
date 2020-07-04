@@ -26,15 +26,11 @@ func CheckLogin(c echo.Context) error {
 			"message": "Inputan tidak boleh kosong",
 		})
 	}
-	res, err := models.CheckLogin(username, password)
+	err := models.CheckLogin(username, password)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{
 			"message": err.Error(),
 		})
-	}
-
-	if !res {
-		return echo.ErrUnauthorized
 	}
 
 	token := jwt.New(jwt.SigningMethodHS256)
